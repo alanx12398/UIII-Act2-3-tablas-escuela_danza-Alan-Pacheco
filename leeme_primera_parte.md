@@ -163,7 +163,8 @@ header.html
 navbar.html
 footer.html
 inicio.html
- base.html
+base.html
+
 <!DOCTYPE html>
     <html lang="es">
     <head>
