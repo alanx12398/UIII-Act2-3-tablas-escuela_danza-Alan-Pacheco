@@ -163,8 +163,129 @@ header.html
 navbar.html
 footer.html
 inicio.html
-
-17. En el archivo base.html
+ base.html
+<!DOCTYPE html>
+    <html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Escuela de Danza</title>
+        
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                background-color: #f8f9fa;
+                padding-bottom: 80px;
+            }
+            .navbar {
+                background-color: #6f42c1;
+            }
+            footer {
+                background-color: #d63384;
+                color: white;
+                position: fixed;
+                bottom: 0;
+                width: 100%;
+                text-align: center;
+                padding: 10px 0;
+            }
+        </style>
+    </head>
+    <body>
+    
+        {% include 'header.html' %}
+        {% include 'navbar.html' %}
+    
+        <main class="container mt-4">
+            {% block content %}
+            {% endblock %}
+        </main>
+    
+        {% include 'footer.html' %}
+    
+        <!-- Bootstrap JS -->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    
+    </body>
+    </html>
+    
+    🎀 header.html
+    <header class="text-center text-white py-4" style="background-color:#d63384;">
+        <h1>💃 Escuela de Danza “Pasos de Arte” 🕺</h1>
+        <p class="mb-0">Sistema de Administración - Profesores, Alumnos y Clases</p>
+    </header>
+    
+    🧭 navbar.html
+    <nav class="navbar navbar-expand-lg navbar-dark">
+      <div class="container-fluid">
+        <a class="navbar-brand fw-bold" href="{% url 'inicio' %}">Inicio</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#menuDanza">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+    
+        <div class="collapse navbar-collapse" id="menuDanza">
+          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+    
+            <!-- PROFESORES -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="profesoresDropdown" role="button" data-bs-toggle="dropdown">Profesores</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'agregar_profesor' %}">Agregar Profesor</a></li>
+                <li><a class="dropdown-item" href="{% url 'ver_profesores' %}">Ver Profesores</a></li>
+              </ul>
+            </li>
+    
+            <!-- ALUMNOS -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="alumnosDropdown" role="button" data-bs-toggle="dropdown">Alumnos</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'agregar_alumno' %}">Agregar Alumno</a></li>
+                <li><a class="dropdown-item" href="{% url 'ver_alumnos' %}">Ver Alumnos</a></li>
+              </ul>
+            </li>
+    
+            <!-- CLASES -->
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="clasesDropdown" role="button" data-bs-toggle="dropdown">Clases</a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'agregar_clase' %}">Agregar Clase</a></li>
+                <li><a class="dropdown-item" href="{% url 'ver_clases' %}">Ver Clases</a></li>
+              </ul>
+            </li>
+    
+          </ul>
+        </div>
+      </div>
+    </nav>
+    
+    🦶 footer.html
+    <footer>
+        <p>© 2025 - Creado por Ing. Eliseo Nava, CBTis 128</p>
+        <p id="fecha-actual"></p>
+    
+        <script>
+            document.getElementById("fecha-actual").textContent = new Date().toLocaleDateString();
+        </script>
+    </footer>
+    
+    🏫 inicio.html
+    {% extends 'base.html' %}
+    {% block content %}
+    <div class="text-center">
+        <h2 class="fw-bold text-primary">Bienvenido al Sistema de la Escuela de Danza</h2>
+        <p class="lead mt-3">Administra de manera sencilla a tus <strong>profesores, alumnos y clases</strong>.</p>
+    
+        <div class="mt-4">
+            <img src="https://cdn.pixabay.com/photo/2017/01/16/19/40/dance-1988914_1280.jpg"
+                 alt="Escuela de Danza"
+                 class="img-fluid rounded shadow"
+                 style="max-width: 700px;">
+        </div>
+    
+        <p class="text-muted mt-3">Inspirando arte y movimiento desde 2025 💫</p>
+    </div>
+    {% endblock %}
+18. En el archivo base.html
 
 Agregar Bootstrap para CSS y JS.
 
