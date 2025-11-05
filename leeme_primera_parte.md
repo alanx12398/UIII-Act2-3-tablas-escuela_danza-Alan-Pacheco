@@ -84,7 +84,7 @@ from django.db import models
 # ==========================================
 # MODELO: PROFESOR
 # ==========================================
-class Profesor(models.Model):
+    class Profesor(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     telefono = models.CharField(max_length=15)
@@ -100,7 +100,7 @@ class Profesor(models.Model):
 # ==========================================
 # MODELO: ALUMNO
 # ==========================================
-class Alumno(models.Model):
+    class Alumno(models.Model):
     nombre = models.CharField(max_length=50)
     apellido = models.CharField(max_length=50)
     fecha_nacimiento = models.DateField()
@@ -120,7 +120,7 @@ class Alumno(models.Model):
 # ==========================================
 # MODELO: CLASE
 # ==========================================
-class Clase(models.Model):
+    class Clase(models.Model):
     nombre = models.CharField(max_length=100)
     descripcion = models.TextField(blank=True, null=True)
     duracion = models.DurationField(help_text="Duración de la clase (hh:mm:ss)")
