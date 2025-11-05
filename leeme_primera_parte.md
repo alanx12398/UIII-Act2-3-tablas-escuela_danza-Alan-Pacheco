@@ -264,3 +264,55 @@ python manage.py runserver 8036
 
 Luego abrir en el navegador:
 ➡️ http://127.0.0.1:8036/
+
+UIII_EscuelaDanza_0777/
+│
+├── .venv/                        ← Carpeta del entorno virtual
+│
+├── backend_EscuelaDanza/         ← Proyecto principal Django
+│   ├── __init__.py
+│   ├── asgi.py
+│   ├── settings.py               ← Configuraciones generales del proyecto
+│   ├── urls.py                   ← Enlaces globales del proyecto
+│   ├── wsgi.py
+│   └── manage.py                 ← Archivo principal para ejecutar comandos Django
+│
+├── app_EscuelaDanza/             ← Aplicación principal de la escuela de danza
+│   ├── __init__.py
+│   ├── admin.py                  ← Registro de modelos para el panel de administración
+│   ├── apps.py
+│   ├── models.py                 ← Contiene los modelos: Profesor, Alumno, Clase
+│   ├── tests.py
+│   ├── urls.py                   ← Rutas propias de la aplicación
+│   ├── views.py                  ← Funciones o vistas de la aplicación
+│   │
+│   ├── migrations/               ← Migraciones automáticas de Django
+│   │   ├── __init__.py
+│   │
+│   └── templates/                ← Carpeta para los archivos HTML
+│       ├── base.html             ← Plantilla base con Bootstrap
+│       ├── header.html           ← Encabezado (logo o título)
+│       ├── navbar.html           ← Barra de navegación
+│       ├── footer.html           ← Pie de página con créditos
+│       ├── inicio.html           ← Página principal del sistema
+│       │
+│       ├── profesor/             ← Carpeta para vistas del modelo Profesor
+│       │   ├── agregar_profesor.html
+│       │   ├── ver_profesores.html
+│       │   ├── actualizar_profesor.html
+│       │   └── borrar_profesor.html
+│       │
+│       ├── alumno/               ← Carpeta para vistas del modelo Alumno
+│       │   ├── agregar_alumno.html
+│       │   ├── ver_alumnos.html
+│       │   ├── actualizar_alumno.html
+│       │   └── borrar_alumno.html
+│       │
+│       └── clase/                ← Carpeta para vistas del modelo Clase
+│           ├── agregar_clase.html
+│           ├── ver_clases.html
+│           ├── actualizar_clase.html
+│           └── borrar_clase.html
+│
+└── requirements.txt              ← (opcional) lista de dependencias instaladas
+
