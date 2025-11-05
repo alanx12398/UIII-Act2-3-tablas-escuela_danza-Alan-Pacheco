@@ -437,4 +437,90 @@ Luego abrir en el navegador:
     │           └── borrar_clase.html
     │
     └── requirements.txt              ← (opcional) lista de dependencias instaladas
+    👨‍🏫 agregar_profesor.html
+    {% extends 'base.html' %}
+    {% block content %}
+    <div class="card shadow p-4">
+        <h2 class="text-center mb-4 text-primary">Agregar Profesor</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center mt-3">
+                <button class="btn btn-success px-4">Guardar</button>
+                <a href="{% url 'ver_profesores' %}" class="btn btn-secondary px-4">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    {% endblock %}
+    
+    📋 ver_profesores.html
+    {% extends 'base.html' %}
+    {% block content %}
+    <h2 class="text-center mb-4 text-primary">Lista de Profesores</h2>
+    
+    <table class="table table-bordered table-striped align-middle shadow-sm">
+        <thead class="table-dark text-center">
+            <tr>
+                <th>Nombre</th>
+                <th>Especialidad</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+                <th>Experiencia</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for profesor in profesores %}
+            <tr>
+                <td>{{ profesor.nombre }}</td>
+                <td>{{ profesor.especialidad }}</td>
+                <td>{{ profesor.telefono }}</td>
+                <td>{{ profesor.email }}</td>
+                <td>{{ profesor.experiencia }} años</td>
+                <td class="text-center">
+                    <a href="{% url 'actualizar_profesor' profesor.id %}" class="btn btn-warning btn-sm">Editar</a>
+                    <a href="{% url 'borrar_profesor' profesor.id %}" class="btn btn-danger btn-sm">Borrar</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="6" class="text-center text-muted">No hay profesores registrados.</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    
+    <div class="text-center mt-4">
+        <a href="{% url 'agregar_profesor' %}" class="btn btn-success">Agregar Nuevo Profesor</a>
+    </div>
+    {% endblock %}
+    
+    ✏️ actualizar_profesor.html
+    {% extends 'base.html' %}
+    {% block content %}
+    <div class="card shadow p-4">
+        <h2 class="text-center mb-4 text-primary">Actualizar Profesor</h2>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <div class="text-center mt-3">
+                <button class="btn btn-primary px-4">Actualizar</button>
+                <a href="{% url 'ver_profesores' %}" class="btn btn-secondary px-4">Cancelar</a>
+            </div>
+        </form>
+    </div>
+    {% endblock %}
+    
+    ❌ borrar_profesor.html
+    {% extends 'base.html' %}
+    {% block content %}
+    <div class="card shadow p-5 text-center">
+        <h2 class="text-danger mb-3">Eliminar Profesor</h2>
+        <p>¿Deseas eliminar al profesor <strong>{{ profesor.nombre }}</strong>?</p>
+
+    <form method="post">
+        {% csrf_token %}
+        <button class="btn btn-danger px-4">Sí, eliminar</button>
+        <a href="{% url 'ver_profesores' %}" class="btn btn-secondary px-4">Cancelar</a>
+    </form>
+    </div>
+    {% endblock %}
 
